@@ -9,9 +9,9 @@
     <string name="network_3g">Network : 3G</string>
     <string name="network_detecting">Network : Detecting </string>
 
-    <string name="update_speed" formatted="false">%s kbit/sec</string>
-    <string name="update_downloaded" formatted="false">Downloaded %s of %s</string>
-    <string name="update_connectionspeed" formatted="false">Connection time %s ms</string>
+    <string name="update_speed" formatted="false">Speed current: %s kbit/sec</string>
+    <string name="update_downloaded" formatted="false">Progress: %s procent</string>
+    <string name="update_connectionspeed" formatted="false">Connection time: %s ms</string>
 
-    <string name="update_downloaded_complete" formatted="false">Downloaded %s @ %s kbit/sec</string>
+    <string name="update_downloaded_complete" formatted="false">Speed: %s kbit/sec</string>
 </resources>

@@ -60,22 +60,22 @@ public class SpeedTest extends ActionBarActivity {
     private final Handler mHandler = new Handler() {
         @Override
         public void handleMessage(final Message msg) {
+            double progress = 0;
             switch (msg.what) {
                 case MSG_UPDATE_STATUS:
                     final SpeedInfo info1 = (SpeedInfo) msg.obj;
                     mTxtSpeed.setText(String.format(getResources().getString(R.string.update_speed), mDecimalFormater.format(info1.kilobits)));
                     // Title progress is in range 0..10000
                     setProgress(100 * msg.arg1);
-                    mTxtProgress.setText(String.format(getResources().getString(R.string.update_downloaded), msg.arg2, EXPECTED_SIZE_IN_BYTES));
+                    mTxtProgress.setText(String.format(getResources().getString(R.string.update_downloaded), msg.arg1));
                     break;
                 case MSG_UPDATE_CONNECTION_TIME:
                     mTxtConnectionSpeed.setText(String.format(getResources().getString(R.string.update_connectionspeed), msg.arg1));
                     break;
                 case MSG_COMPLETE_STATUS:
                     final SpeedInfo info2 = (SpeedInfo) msg.obj;
-                    mTxtSpeed.setText(String.format(getResources().getString(R.string.update_downloaded_complete), msg.arg1, info2.kilobits));
-
-                    mTxtProgress.setText(String.format(getResources().getString(R.string.update_downloaded), msg.arg1, EXPECTED_SIZE_IN_BYTES));
+                    mTxtSpeed.setText(String.format(getResources().getString(R.string.update_downloaded_complete), info2.kilobits));
+                    mTxtProgress.setText(String.format(getResources().getString(R.string.update_downloaded), 100));
 
                     if (networkType(info2.kilobits) == 1) {
                         mTxtNetwork.setText(R.string.network_3g);
@@ -102,7 +102,7 @@ public class SpeedTest extends ActionBarActivity {
             InputStream stream = null;
             try {
                 int bytesIn = 0;
-                String downloadFileUrl = "https://dl.dropboxusercontent.com/u/58070958/speedtest.txt";
+                String downloadFileUrl = "http://speedtest.ftp.otenet.gr/files/test1Mb.db";
                 long startCon = System.currentTimeMillis();
                 URL url = new URL(downloadFileUrl);
                 URLConnection con = url.openConnection();
